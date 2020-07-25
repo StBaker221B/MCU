@@ -50,9 +50,11 @@ class Control_window(QtWidgets.QMainWindow ):
         label = self.ui.labelState_3.text()
         if (label == "OFF"):
             self.ui.labelState_3.setText("ON")
+            com(b'1\r\n')
         else:
             self.ui.labelState_3.setText("OFF")
-
+            com(b'0\r\n')
+            
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Control_window()

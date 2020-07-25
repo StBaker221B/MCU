@@ -1,7 +1,7 @@
 import serial
  
 #连接串口
-serial = serial.Serial('/dev/ttyUSB0',115200,timeout=2)
+serial = serial.Serial('COM4',115200,timeout=2)
 if serial.isOpen():
 	print ('串口已打开')
  

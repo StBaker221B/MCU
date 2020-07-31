@@ -60,15 +60,19 @@ void timecontrol()
         //     break;
         case 2:
             LED0 = 0;
+            SIGC0 = 0;
             break;
         case 3:
             LED1 = 0;
+            SIGC1 = 0;
             break;
         case 5:
             LED0 = 1;
+            SIGC0 = 1;
             break;
         case 6:
             LED1 = 1;
+            SIGC1 = 1;
             break;
         // case 7:
         //     *time_s = 0;

@@ -1,30 +1,33 @@
 #ifndef __SIG_H
 #define __SIG_H	 
 #include "sys.h"
-//////////////////////////////////////////////////////////////////////////////////	 
-//������ֻ��ѧϰʹ�ã�δ���������ɣ��������������κ���;
-//ALIENTEKս��STM32������
-//LED��������	   
-//����ԭ��@ALIENTEK
-//������̳:www.openedv.com
-//�޸�����:2012/9/2
-//�汾��V1.0
-//��Ȩ���У�����ؾ���
-//Copyright(C) �������������ӿƼ����޹�˾ 2009-2019
-//All rights reserved									  
-////////////////////////////////////////////////////////////////////////////////// 
 
-#define SIGC0 PCout(0)  // PC0
-#define SIGC1 PCout(1)  // PC1	
-#define SIGC2 PCout(2)  // PC2
-#define SIGC3 PCout(3)  // PC3	
-#define SIGC4 PCout(4)  // PC4
-#define SIGC5 PCout(5)  // PC5	
-#define SIGC6 PCout(6)  // PC6	
-#define SIGC7 PCout(7)  // PC7	
-#define SIGC8 PCout(8)  // PC8	
-#define SIGC9 PCout(9)  // PC9	
+/* Initiate signal io, enable the clock of the io ports
+ * signal io: PA[8], PB[8, 9], PC[0-7], PD[3, 6, 7], 
+ * PE[2, 3, 6], PF[6, 7, 8], PG[6, 7, 8, 13, 14, 15]
+ * sum 26 ports
+ */
 
-void SIG_Init(void);  //��ʼ��
+// PSA1 
+#define PSA1_IN PCout(0)  // PC0
+#define PSA1_PRO PCout(1)  // PC1	
+#define PSA1_BAL PCout(2)  // PC2
+#define PSA1_CLR PCout(3)  // PC3	
+
+// PSA2 
+#define PSA2_IN PCout(4)  // PC4
+#define PSA2_PRO PCout(5)  // PC5	
+#define PSA2_BAL PCout(6)  // PC6	
+#define PSA2_CLR PCout(7)  // PC7	
+
+// PROD
+#define PROD_OUT PFout(6)  
+#define PROD_PSA1 PFout(7)  	
+#define PROD_PSA2 PFout(8)  	
+
+// COL2
+#define COL2_IN PBout(8)  	
+
+void SIG_Init(void); 
 		 				    
 #endif

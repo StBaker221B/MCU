@@ -3,4 +3,8 @@
     <file>resource/switchoff_128px.png</file>
     <file>resource/switchon_128px.png</file>
   </qresource>
+  <qresource prefix="logo_valve">
+    <file>resource/valveoff.png</file>
+    <file>resource/valveon.png</file>
+  </qresource>
 </RCC>

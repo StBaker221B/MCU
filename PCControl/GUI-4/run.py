@@ -23,10 +23,36 @@ class mainwindow(QtWidgets.QMainWindow):
         if(ser == 0):
             print("fail")
         else:
-            self.ui.button_C_0.clicked.connect(
-                lambda : myslot.btn_C_0_clicked(ser, self.ui.button_C_0.isChecked()))
-            self.ui.button_C_1.clicked.connect(
-                lambda : myslot.btn_C_1_clicked(ser, self.ui.button_C_1.isChecked()))
+            # PSA 1
+            self.ui.BTN_PSA1_IN.clicked.connect(
+                lambda : myslot.BTN_PSA1_IN_clicked(ser, self.ui.BTN_PSA1_IN.isChecked()))
+            self.ui.BTN_PSA1_PRO.clicked.connect(
+                lambda : myslot.BTN_PSA1_PRO_clicked(ser, self.ui.BTN_PSA1_PRO.isChecked()))
+            self.ui.BTN_PSA1_BAL.clicked.connect(
+                lambda : myslot.BTN_PSA1_BAL_clicked(ser, self.ui.BTN_PSA1_BAL.isChecked()))
+            self.ui.BTN_PSA1_CLR.clicked.connect(
+                lambda : myslot.BTN_PSA1_CLR_clicked(ser, self.ui.BTN_PSA1_CLR.isChecked()))
+            # PSA 2
+            self.ui.BTN_PSA2_IN.clicked.connect(
+                lambda : myslot.BTN_PSA2_IN_clicked(ser, self.ui.BTN_PSA2_IN.isChecked()))
+            self.ui.BTN_PSA2_PRO.clicked.connect(
+                lambda : myslot.BTN_PSA2_PRO_clicked(ser, self.ui.BTN_PSA2_PRO.isChecked()))
+            self.ui.BTN_PSA2_BAL.clicked.connect(
+                lambda : myslot.BTN_PSA2_BAL_clicked(ser, self.ui.BTN_PSA2_BAL.isChecked()))
+            self.ui.BTN_PSA2_CLR.clicked.connect(
+                lambda : myslot.BTN_PSA2_CLR_clicked(ser, self.ui.BTN_PSA2_CLR.isChecked()))
+            # PROD 
+            self.ui.BTN_PROD_OUT.clicked.connect(
+                lambda : myslot.BTN_PROD_OUT_clicked(ser, self.ui.BTN_PROD_OUT.isChecked()))
+            self.ui.BTN_PROD_PSA1.clicked.connect(
+                lambda : myslot.BTN_PROD_PSA1_clicked(ser, self.ui.BTN_PROD_PSA1.isChecked()))
+            self.ui.BTN_PROD_PSA2.clicked.connect(
+                lambda : myslot.BTN_PROD_PSA2_clicked(ser, self.ui.BTN_PROD_PSA2.isChecked()))
+            # COL2
+            self.ui.BTN_COL2_IN.clicked.connect(
+                lambda : myslot.BTN_COL2_IN_clicked(ser, self.ui.BTN_COL2_IN.isChecked()))
+     
+        
         # self.ui.button_C_2.clicked.connect(myslot.btn_C_2_clicked(ser))
         # self.ui.button_C_3.clicked.connect(myslot.btn_C_3_clicked(ser))
         # self.ui.button_C_4.clicked.connect(myslot.btn_C_4_clicked(ser))
@@ -52,11 +78,13 @@ class mainwindow(QtWidgets.QMainWindow):
         #     self.ui.button_C_6, self.ui.button_C_7,
         #     self.ui.button_C_8, self.ui.button_C_9]}
         self.switchTable = {
-            "PSA1":[self.ui.button_C_0, self.ui.button_C_1, 
-            self.ui.button_C_2, self.ui.button_C_3],
-            "PSA2":[self.ui.button_C_4, self.ui.button_C_5,
-            self.ui.button_C_6, self.ui.button_C_7],
-            "PROD":[self.ui.button_C_8, self.ui.button_C_9]}
+            "PSA1":[self.ui.BTN_PSA1_IN, self.ui.BTN_PSA1_PRO, 
+            self.ui.BTN_PSA1_BAL, self.ui.BTN_PSA1_CLR],
+            "PSA2":[self.ui.BTN_PSA2_IN, self.ui.BTN_PSA2_PRO,
+            self.ui.BTN_PSA2_BAL, self.ui.BTN_PSA2_CLR],
+            "PROD":[self.ui.BTN_PROD_OUT, self.ui.BTN_PROD_PSA1,
+            self.ui.BTN_PROD_PSA2],
+            "COL2":[self.ui.BTN_COL2_IN]}
 
     # def update(self, ser):
     #     data = ser.read(10)
@@ -65,7 +93,7 @@ class mainwindow(QtWidgets.QMainWindow):
         # QtWidgets.QApplication.processEvents()
 
     def updateSwitch(self, report):
-        print(report)
+        # print(report)
         report = report.split()
         print(report)
         section = report[0]
@@ -84,17 +112,19 @@ class mainwindow(QtWidgets.QMainWindow):
         elif(section == 'PROD'):
             if(function == 'OUT'):
                 switch = self.switchTable[section][0]
-            elif(function == 'PSA1' or function == 'PSA2'):
+            elif(function == 'PSA1'):
                 switch = self.switchTable[section][1]
+            elif(function == 'PSA2'):
+                switch = self.switchTable[section][2]
         elif(section == 'COL2'):
             if(function == 'IN'):
-                switch = self.switchTable['PROD'][0]
+                switch = self.switchTable['COL2'][0]
                 
         print(switch.isChecked())
-        if(report[2] == '0'):
+        if(report[2] == '1'):
             if(not switch.isChecked()):
                 switch.toggle()
-        if(report[2] == '1'):
+        if(report[2] == '0'):
             if(switch.isChecked()):
                 switch.toggle()
 

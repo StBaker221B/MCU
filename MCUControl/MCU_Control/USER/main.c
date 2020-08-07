@@ -510,261 +510,202 @@ void autoCtrlrepeat()
 
 void manualCtrl()
 {
-    // u8 C0[2] = {"C0"}
-    // u8 C1[2] = {"C1"}
     int t;
-/*
-    switch(USART_RX_BUF[0])
+
+    if(USART_RX_STA & 0x8000)
     {
-        // case 'C'
-        case 0x43:
-            report[0] = 'C';
-            switch(USART_RX_BUF[1])
+        // PSA1 
+        if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x31))
+        {
+            report[0] = 'P';
+            report[1] = 'S';
+            report[2] = 'A';
+            report[3] = '1';
+            report[4] = ' ';
+            
+            // IN 
+            if(USART_RX_BUF[5] == 0x49)
             {
-                // case '0'
-                case 0x30:
-                    // LED0 =! LED0;
-                    // SIGC0 =! SIGC0;
-                    // port = &SIGC0;
-                    port = &LED0;
-                    report[1] = '0';
-                    break;
-                // case '1'
-                case 0x31:
-                    // LED1 =! LED1;
-                    // SIGC1 =! SIGC1;
-                    // port = &SIGC1;
-                    port = &LED1;
-                    report[1] = '1';
-                    break;
-                case 0x32:
-                    // SIGC2 =! SIGC2;
-                    port = &SIGC2;
-                    break;
-                case 0x33:
-                    // SIGC3 =! SIGC3;
-                    port = &SIGC3;
-                    break;
-                case 0x34:
-                    // SIGC4 =! SIGC4;
-                    port = &SIGC4;
-                    break;
-                case 0x35:
-                    // SIGC5 =! SIGC5;
-                    port = &SIGC5;
-                    break;
-                case 0x36:
-                    // SIGC6 =! SIGC6;
-                    port = &SIGC6;
-                    break;
-                case 0x37:
-                    // SIGC7 =! SIGC7;
-                    port = &SIGC7;
-                    break;
-                case 0x38:
-                    // SIGC8 =! SIGC8;
-                    port = &SIGC8;
-                    break;
-                case 0x39:
-                    // SIGC9 =! SIGC9;
-                    port = &SIGC9;
-                    break;
+                port = &PSA1_IN;
+                report[5] = 'I';
+                report[6] = 'N';
+                report[7] = ' ';
+                report[8] = ' ';
             }
-            break;
-    }
-*/
-    // PSA1 
-    if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x31))
-    {
-        report[0] = 'P';
-        report[1] = 'S';
-        report[2] = 'A';
-        report[3] = '1';
-        report[4] = ' ';
-        
-        // IN 
-        if(USART_RX_BUF[5] == 0x49)
-        {
-            port = &PSA1_IN;
-            report[5] = 'I';
-            report[6] = 'N';
-            report[7] = ' ';
-            report[8] = ' ';
-        }
+                
+            // PRO 
+            if(USART_RX_BUF[5] == 0x50)
+            {
+                port = &PSA1_PRO;
+                report[5] = 'P';
+                report[6] = 'R';
+                report[7] = 'O';
+                report[8] = ' ';
+            }
             
-        // PRO 
-        if(USART_RX_BUF[5] == 0x50)
-        {
-            port = &PSA1_PRO;
-            report[5] = 'P';
-            report[6] = 'R';
-            report[7] = 'O';
-            report[8] = ' ';
-        }
-        
-        // BAL 
-        if(USART_RX_BUF[5] == 0x42)
-        {
-            port = &PSA1_BAL;
-            report[5] = 'B';
-            report[6] = 'A';
-            report[7] = 'L';
-            report[8] = ' ';
+            // BAL 
+            if(USART_RX_BUF[5] == 0x42)
+            {
+                port = &PSA1_BAL;
+                report[5] = 'B';
+                report[6] = 'A';
+                report[7] = 'L';
+                report[8] = ' ';
+            }
+
+            // CLR 
+            if(USART_RX_BUF[5] == 0x43)
+            {
+                port = &PSA1_CLR;
+                report[5] = 'C';
+                report[6] = 'L';
+                report[7] = 'R';
+                report[8] = ' ';
+            }
+
+            report[9] = ' ';
         }
 
-        // CLR 
-        if(USART_RX_BUF[5] == 0x43)
-        {
-            port = &PSA1_CLR;
-            report[5] = 'C';
-            report[6] = 'L';
-            report[7] = 'R';
-            report[8] = ' ';
-        }
-
-        report[9] = ' ';
-    }
-
-    // PSA2
-    if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x32))
-    {
-        report[0] = 'P';
-        report[1] = 'S';
-        report[2] = 'A';
-        report[3] = '2';
-        report[4] = ' ';
-        
-        // IN 
-        if(USART_RX_BUF[5] == 0x49)
-        {
-            port = &PSA2_IN;
-            report[5] = 'I';
-            report[6] = 'N';
-            report[7] = ' ';
-            report[8] = ' ';
-        }
-            
-        // PRO 
-        if(USART_RX_BUF[5] == 0x50)
-        {
-            port = &PSA2_PRO;
-            report[5] = 'P';
-            report[6] = 'R';
-            report[7] = 'O';
-            report[8] = ' ';
-        }
-        
-        // BAL 
-        if(USART_RX_BUF[5] == 0x42)
-        {
-            port = &PSA2_BAL;
-            report[5] = 'B';
-            report[6] = 'A';
-            report[7] = 'L';
-            report[8] = ' ';
-        }
-
-        // CLR 
-        if(USART_RX_BUF[5] == 0x43)
-        {
-            port = &PSA2_CLR;
-            report[5] = 'C';
-            report[6] = 'L';
-            report[7] = 'R';
-            report[8] = ' ';
-        }
-
-        report[9] = ' ';
-    }
-
-    // PROD
-    if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x44))
-    {
-        report[0] = 'P';
-        report[1] = 'R';
-        report[2] = 'O';
-        report[3] = 'D';
-        report[4] = ' ';
-        
-        // OUT
-        if(USART_RX_BUF[5] == 0x4F)
-        {
-            port = &PROD_OUT;
-            report[5] = 'O';
-            report[6] = 'U';
-            report[7] = 'T';
-            report[8] = ' ';
-        }
-            
-        // PSA1
-        if(USART_RX_BUF[8] == 0x31)
-        {
-            port = &PROD_PSA1;
-            report[5] = 'P';
-            report[6] = 'S';
-            report[7] = 'A';
-            report[8] = '1';
-        }
-        
         // PSA2
-        if(USART_RX_BUF[8] == 0x32)
+        if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x32))
         {
-            port = &PROD_PSA2;
-            report[5] = 'P';
-            report[6] = 'S';
-            report[7] = 'A';
-            report[8] = '2';
+            report[0] = 'P';
+            report[1] = 'S';
+            report[2] = 'A';
+            report[3] = '2';
+            report[4] = ' ';
+            
+            // IN 
+            if(USART_RX_BUF[5] == 0x49)
+            {
+                port = &PSA2_IN;
+                report[5] = 'I';
+                report[6] = 'N';
+                report[7] = ' ';
+                report[8] = ' ';
+            }
+                
+            // PRO 
+            if(USART_RX_BUF[5] == 0x50)
+            {
+                port = &PSA2_PRO;
+                report[5] = 'P';
+                report[6] = 'R';
+                report[7] = 'O';
+                report[8] = ' ';
+            }
+            
+            // BAL 
+            if(USART_RX_BUF[5] == 0x42)
+            {
+                port = &PSA2_BAL;
+                report[5] = 'B';
+                report[6] = 'A';
+                report[7] = 'L';
+                report[8] = ' ';
+            }
+
+            // CLR 
+            if(USART_RX_BUF[5] == 0x43)
+            {
+                port = &PSA2_CLR;
+                report[5] = 'C';
+                report[6] = 'L';
+                report[7] = 'R';
+                report[8] = ' ';
+            }
+
+            report[9] = ' ';
         }
 
-        report[9] = ' ';
-    }
-
-    // COL2
-    if((USART_RX_BUF[0] == 0x43) )
-    {
-        report[0] = 'C';
-        report[1] = 'O';
-        report[2] = 'L';
-        report[3] = '2';
-        report[4] = ' ';
-        
-        // IN
-        if(USART_RX_BUF[5] == 0x49)
+        // PROD
+        if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x44))
         {
-            port = &PROD_OUT;
-            report[5] = 'I';
-            report[6] = 'N';
-            report[7] = ' ';
-            report[8] = ' ';
+            report[0] = 'P';
+            report[1] = 'R';
+            report[2] = 'O';
+            report[3] = 'D';
+            report[4] = ' ';
+            
+            // OUT
+            if(USART_RX_BUF[5] == 0x4F)
+            {
+                port = &PROD_OUT;
+                report[5] = 'O';
+                report[6] = 'U';
+                report[7] = 'T';
+                report[8] = ' ';
+            }
+                
+            // PSA1
+            if(USART_RX_BUF[8] == 0x31)
+            {
+                port = &PROD_PSA1;
+                report[5] = 'P';
+                report[6] = 'S';
+                report[7] = 'A';
+                report[8] = '1';
+            }
+            
+            // PSA2
+            if(USART_RX_BUF[8] == 0x32)
+            {
+                port = &PROD_PSA2;
+                report[5] = 'P';
+                report[6] = 'S';
+                report[7] = 'A';
+                report[8] = '2';
+            }
+
+            report[9] = ' ';
+        }
+
+        // COL2
+        if((USART_RX_BUF[0] == 0x43) )
+        {
+            report[0] = 'C';
+            report[1] = 'O';
+            report[2] = 'L';
+            report[3] = '2';
+            report[4] = ' ';
+            
+            // IN
+            if(USART_RX_BUF[5] == 0x49)
+            {
+                port = &PROD_OUT;
+                report[5] = 'I';
+                report[6] = 'N';
+                report[7] = ' ';
+                report[8] = ' ';
+            }
+            
+            report[9] = ' ';
+        }
+
+
+        switch(USART_RX_BUF[10])
+        {
+            // case '0'
+            case 0x30:
+                *port = 0;
+                // printf("port = 0\n");
+                report[10] = '0';
+                break;
+            case 0x31:
+                *port = 1;
+                report[10] = '1';
+                // printf("port = 1\n");
+                break;
         }
         
-        report[9] = ' ';
+        for( t = 0; t < 11; t++ )
+        {
+            // USART_SendData(USART1, report[t]);
+            // while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
+            printf("%c", report[t]);
+        }
+        USART_RX_STA=0;
     }
-
-
-    switch(USART_RX_BUF[10])
-    {
-        // case '0'
-        case 0x30:
-            *port = 0;
-            // printf("port = 0\n");
-            report[10] = '0';
-            break;
-        case 0x31:
-            *port = 1;
-            report[10] = '1';
-            // printf("port = 1\n");
-            break;
-    }
-    
-    for( t = 0; t < 11; t++ )
-    {
-        // USART_SendData(USART1, report[t]);
-        // while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
-        printf("%c", report[t]);
-    }
-    USART_RX_STA=0;
-
 }
 
 void ctrlDecide()
@@ -921,10 +862,10 @@ int main()
             case MANUAL:
                 LED0 = 0;
                 LED1 = 0;
-                while(USART_RX_BUF[0] == 0x00)
-                {
-                    ;
-                }
+                // while(USART_RX_BUF[0] == 0x00)
+                // {
+                //     ;
+                // }
                 manualCtrl();
                 // cs = TIME_CONTROL_REPEAT;
                 // report();

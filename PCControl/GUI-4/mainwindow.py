@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './mainwindow.ui'
+# Form implementation generated from reading ui file 'mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         self.BTN_PSA1_IN.setGeometry(QtCore.QRect(120, 70, 40, 40))
         self.BTN_PSA1_IN.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("./resource/valveoff.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("resource/valveoff.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon.addPixmap(QtGui.QPixmap(":/logo_valve/resource/valveon.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.BTN_PSA1_IN.setIcon(icon)
         self.BTN_PSA1_IN.setIconSize(QtCore.QSize(32, 32))
@@ -294,12 +294,10 @@ class Ui_MainWindow(object):
         self.actionStart.setObjectName("actionStart")
         self.actionRepeat = QtWidgets.QAction(MainWindow)
         self.actionRepeat.setObjectName("actionRepeat")
-        self.actionManual_2 = QtWidgets.QAction(MainWindow)
-        self.actionManual_2.setObjectName("actionManual_2")
         self.menuAuto.addAction(self.actionStart)
         self.menuAuto.addAction(self.actionRepeat)
         self.menuControl.addAction(self.menuAuto.menuAction())
-        self.menuControl.addAction(self.actionManual_2)
+        self.menuControl.addAction(self.actionManual)
         self.menuHelp.addAction(self.actionAbout)
         self.menubar.addAction(self.menuControl.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
@@ -333,5 +331,4 @@ class Ui_MainWindow(object):
         self.actionAbout.setText(_translate("MainWindow", "About"))
         self.actionStart.setText(_translate("MainWindow", "Start"))
         self.actionRepeat.setText(_translate("MainWindow", "Repeat"))
-        self.actionManual_2.setText(_translate("MainWindow", "Manual"))
 import res_rc

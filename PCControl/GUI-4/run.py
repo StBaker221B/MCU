@@ -54,7 +54,7 @@ class mainwindow(QtWidgets.QMainWindow):
      
         self.ui.actionStart.triggered.connect(lambda : myslot.setAutostart(ser))
         self.ui.actionRepeat.triggered.connect(lambda : myslot.setAutorepeat(ser))
-        self.ui.actionManual.triggered.connect(lambda : myslot.setMaunal(ser))
+        self.ui.actionManual.triggered.connect(lambda : myslot.setManual(ser))
         # self.ui.actionAbout.triggered.connect()
 
         # self.ui.button_C_2.clicked.connect(myslot.btn_C_2_clicked(ser))
@@ -142,8 +142,8 @@ class updateThread(QThread):
     def run(self):
         while True:
             data = self.ser.read(11)
-            # if data != b'':
-            if data != 0x00:
+            if data != b'':
+            # if data != 0x00:
                 # data = list(data)
                 data = bytes.decode(data)
                 # data = data[2:5]

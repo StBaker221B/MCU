@@ -857,7 +857,7 @@
      <addaction name="actionRepeat"/>
     </widget>
     <addaction name="menuAuto"/>
-    <addaction name="actionManual_4"/>
+    <addaction name="actionManual"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">

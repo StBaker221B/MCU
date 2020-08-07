@@ -17,9 +17,9 @@
 
 typedef enum 
 {
-    TIME_CONTROL_START = 0,
-    TIME_CONTROL_REPEAT = 1,
-    PC_CONTROL = 2
+    AUTO_START = 0,
+    AUTO_REPEAT = 1,
+    MANUAL = 2
 } control_state;
 
 u32* time_s = NULL;
@@ -39,13 +39,14 @@ void init()
     SIG_Init();
     KEY_Init();
 
-    cs = TIME_CONTROL_START;
+    cs = AUTO_START;
 
     // second = &time_s;
     // time_s = TIM3_Int_Init(9999, 7199);
     time_s = TIM3_Int_Init(999, 7199);  // 0.1 s 计时
     // TIM3_Int_Init(9999, 7199, &time_s);
-    TIME_PERIOD = 140;
+
+    // TIME_PERIOD = 140;
     port = NULL;
     // port = {&LED0, &LED1, 
     //         &SIGC0, &SIGC1, &SIGC2, &SIGC3, &SIGC4, 
@@ -56,7 +57,7 @@ void init()
     LED1 = 1;
 }
 
-void timeCtrlstart()
+void autoCtrlstart()
 {
     // printf("time control \r\n");
 
@@ -359,12 +360,17 @@ void timeCtrlstart()
             PROD_PSA2 = 1;
 
             COL2_IN = 0;
-            break;       
+            break; 
+
+        case 141:  // over 14 s   
+            *time_s = 0;
+            cs = AUTO_REPEAT;
+            break;
     
     }
 }
 
-void timeCtrlrepeat()
+void autoCtrlrepeat()
 {
     // repeat cycle time control
     switch(*time_s)
@@ -493,12 +499,16 @@ void timeCtrlrepeat()
             PROD_PSA2 = 1;
 
             COL2_IN = 0;
-            break;       
-    
+            break;    
+
+        case 61:  // over 6 s
+            *time_s = 0;
+            cs = AUTO_REPEAT;
+            break;
     }
 }
 
-void pcCtrl()
+void manualCtrl()
 {
     // u8 C0[2] = {"C0"}
     // u8 C1[2] = {"C1"}
@@ -757,6 +767,41 @@ void pcCtrl()
 
 }
 
+void ctrlDecide()
+{
+    if(USART_RX_STA & 0x8000)
+    {
+        // SET 
+        if((USART_RX_BUF[0] == 0x53) && (USART_RX_BUF[1] == 0x45)
+            && (USART_RX_BUF[2] == 0x54))
+        {
+            // START 
+            if(USART_RX_BUF[4] == 0x53)
+            {
+                cs = AUTO_START;
+                USART_RX_STA=0;
+            }
+            // REPEAT 
+            else if(USART_RX_BUF[4] == 0x52)
+            {
+                cs = AUTO_REPEAT;
+                USART_RX_STA=0;
+            }
+            // MANUAL 
+            else if(USART_RX_BUF[4] == 0x4D)
+            {
+                cs = MANUAL;
+                USART_RX_STA=0;
+            }
+        }
+        // else
+        // {
+        //     cs = MANUAL;
+        // }
+
+    }
+}
+
 void portReport()
 {
     // PSA1_IN
@@ -839,38 +884,56 @@ int main()
 
     while(1)
     {
-        if( *time_s > TIME_PERIOD )
-        {
-            *time_s = 0;
-            cs = TIME_CONTROL_REPEAT;
-            continue;
-        }
+        // if( *time_s > TIME_PERIOD )
+        // {
+        //     *time_s = 0;
+        //     cs = TIME_CONTROL_REPEAT;
+        //     continue;
+        // }
+        ctrlDecide();
+        // printf("%d\n", cs);
 
-        if(USART_RX_STA & 0x8000)
-        {
-            cs = PC_CONTROL;
-        }
+        // if(USART_RX_STA & 0x8000)
+        // {
+        //     // cs = PC_CONTROL;
+        //     ctrlDecide();
+        // }
 
         switch(cs)
         {
-            case TIME_CONTROL_START:
-                timeCtrlstart();
+            case AUTO_START:
+                if(*time_s > 141)
+                {
+                    *time_s = 0;
+                }
+                autoCtrlstart();
                 break;
-            case TIME_CONTROL_REPEAT:
+            case AUTO_REPEAT:
                 // printf("TIME CONTROL \r\n");
-                timeCtrlrepeat();
+                if(*time_s > 61)
+                {
+                    *time_s = 0;
+                }
+                autoCtrlrepeat();
                 // delay_ms(500);
                 // report();
                 break;
-            case PC_CONTROL:
-                pcCtrl();
+            case MANUAL:
+                LED0 = 0;
+                LED1 = 0;
+                while(USART_RX_BUF[0] == 0x00)
+                {
+                    ;
+                }
+                manualCtrl();
                 // cs = TIME_CONTROL_REPEAT;
                 // report();
                 // delay_ms(1000);
                 break;
         }
 
-        if((*time_s % 100) == 0)
+        if((*time_s % 10) == 0)
+            // printf("%d\n", *time_s);
             portReport();
 
         // LED0 =! LED0;

@@ -849,8 +849,15 @@
     <property name="title">
      <string>Control</string>
     </property>
-    <addaction name="actionAuto"/>
-    <addaction name="actionManual"/>
+    <widget class="QMenu" name="menuAuto">
+     <property name="title">
+      <string>Auto</string>
+     </property>
+     <addaction name="actionStart"/>
+     <addaction name="actionRepeat"/>
+    </widget>
+    <addaction name="menuAuto"/>
+    <addaction name="actionManual_4"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -862,11 +869,6 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionAuto">
-   <property name="text">
-    <string>Auto</string>
-   </property>
-  </action>
   <action name="actionManual">
    <property name="text">
     <string>Manual</string>
@@ -875,6 +877,16 @@
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionRepeat">
+   <property name="text">
+    <string>Repeat</string>
    </property>
   </action>
  </widget>

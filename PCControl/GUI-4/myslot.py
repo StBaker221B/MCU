@@ -81,4 +81,13 @@ def BTN_COL2_IN_clicked(ser, state):
 # def btn_C_9_clicked():
 #     spcom(b'C9\r\n')
 
+def setAutostart(ser):
+    spcom(ser, b'SET START')
+
+def setAutorepeat(ser):
+    spcom(ser, b'SET REPEAT ')
+
+def setManual(ser):
+    spcom(ser, b'SET MANUAL ')
+
 

@@ -52,15 +52,12 @@ class mainwindow(QtWidgets.QMainWindow):
             self.ui.BTN_COL2_IN.clicked.connect(
                 lambda : myslot.BTN_COL2_IN_clicked(ser, self.ui.BTN_COL2_IN.isChecked()))
      
-        
+        self.ui.actionStart.triggered.connect(lambda : myslot.setAutostart(ser))
+        self.ui.actionRepeat.triggered.connect(lambda : myslot.setAutorepeat(ser))
+        self.ui.actionManual.triggered.connect(lambda : myslot.setMaunal(ser))
+        # self.ui.actionAbout.triggered.connect()
+
         # self.ui.button_C_2.clicked.connect(myslot.btn_C_2_clicked(ser))
-        # self.ui.button_C_3.clicked.connect(myslot.btn_C_3_clicked(ser))
-        # self.ui.button_C_4.clicked.connect(myslot.btn_C_4_clicked(ser))
-        # self.ui.button_C_5.clicked.connect(myslot.btn_C_5_clicked(ser))
-        # self.ui.button_C_6.clicked.connect(myslot.btn_C_6_clicked(ser))
-        # self.ui.button_C_7.clicked.connect(myslot.btn_C_7_clicked(ser))
-        # self.ui.button_C_8.clicked.connect(myslot.btn_C_8_clicked(ser))
-        # self.ui.button_C_9.clicked.connect(myslot.btn_C_9_clicked(ser))
         
         # self.timer = QTimer(self)
         # self.timer.timeout.connect(lambda : self.update(ser)) 
@@ -145,7 +142,8 @@ class updateThread(QThread):
     def run(self):
         while True:
             data = self.ser.read(11)
-            if data != b'':
+            # if data != b'':
+            if data != 0x00:
                 # data = list(data)
                 data = bytes.decode(data)
                 # data = data[2:5]

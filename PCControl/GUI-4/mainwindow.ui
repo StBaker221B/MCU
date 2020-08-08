@@ -226,7 +226,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>PSA1_IN</string>
+     <string>PSA2_IN</string>
     </property>
     <property name="text">
      <string/>
@@ -256,7 +256,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>PSA1_BAL</string>
+     <string>PSA2_BAL</string>
     </property>
     <property name="icon">
      <iconset>
@@ -310,7 +310,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>PSA1_PRO</string>
+     <string>PSA2_PRO</string>
     </property>
     <property name="icon">
      <iconset>

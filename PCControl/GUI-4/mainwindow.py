@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainwindow.ui'
+# Form implementation generated from reading ui file './mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         self.BTN_PSA1_IN.setGeometry(QtCore.QRect(120, 70, 40, 40))
         self.BTN_PSA1_IN.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("resource/valveoff.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("./resource/valveoff.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon.addPixmap(QtGui.QPixmap(":/logo_valve/resource/valveon.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.BTN_PSA1_IN.setIcon(icon)
         self.BTN_PSA1_IN.setIconSize(QtCore.QSize(32, 32))
@@ -313,10 +313,10 @@ class Ui_MainWindow(object):
         self.BTN_PSA1_PRO.setToolTip(_translate("MainWindow", "PSA1_PRO"))
         self.BTN_PSA1_BAL.setToolTip(_translate("MainWindow", "PSA1_BAL"))
         self.BTN_PSA1_CLR.setToolTip(_translate("MainWindow", "PSA1_CLR"))
-        self.BTN_PSA2_IN.setToolTip(_translate("MainWindow", "PSA1_IN"))
-        self.BTN_PSA2_BAL.setToolTip(_translate("MainWindow", "PSA1_BAL"))
+        self.BTN_PSA2_IN.setToolTip(_translate("MainWindow", "PSA2_IN"))
+        self.BTN_PSA2_BAL.setToolTip(_translate("MainWindow", "PSA2_BAL"))
         self.BTN_PSA2_CLR.setToolTip(_translate("MainWindow", "PSA2_CLR"))
-        self.BTN_PSA2_PRO.setToolTip(_translate("MainWindow", "PSA1_PRO"))
+        self.BTN_PSA2_PRO.setToolTip(_translate("MainWindow", "PSA2_PRO"))
         self.BTN_PROD_OUT.setToolTip(_translate("MainWindow", "PROD_OUT"))
         self.BTN_PROD_PSA1.setToolTip(_translate("MainWindow", "PROD_PSA1"))
         self.BTN_PROD_PSA2.setToolTip(_translate("MainWindow", "PROD_PSA2"))

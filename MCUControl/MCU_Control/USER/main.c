@@ -57,6 +57,41 @@ void init()
     LED1 = 1;
 }
 
+void ctrlDecide()
+{
+    if(USART_RX_STA & 0x8000)
+    {
+        // SET 
+        if((USART_RX_BUF[0] == 0x53) && (USART_RX_BUF[1] == 0x45)
+            && (USART_RX_BUF[2] == 0x54))
+        {
+            // START 
+            if(USART_RX_BUF[4] == 0x53)
+            {
+                cs = AUTO_START;
+                USART_RX_STA=0;
+            }
+            // REPEAT 
+            else if(USART_RX_BUF[4] == 0x52)
+            {
+                cs = AUTO_REPEAT;
+                USART_RX_STA=0;
+            }
+            // MANUAL 
+            else if(USART_RX_BUF[4] == 0x4D)
+            {
+                cs = MANUAL;
+                USART_RX_STA=0;
+            }
+        }
+        else
+        {
+            cs = MANUAL;
+        }
+
+    }
+}
+
 void autoCtrlstart()
 {
     // printf("time control \r\n");
@@ -682,7 +717,6 @@ void manualCtrl()
             report[9] = ' ';
         }
 
-
         switch(USART_RX_BUF[10])
         {
             // case '0'
@@ -704,44 +738,17 @@ void manualCtrl()
             // while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
             printf("%c", report[t]);
         }
+        
+        if((USART_RX_BUF[0] == 0x53) && (USART_RX_BUF[1] == 0x45)
+            && (USART_RX_BUF[2] == 0x54))
+        {
+            ctrlDecide();
+        }
+
         USART_RX_STA=0;
     }
 }
 
-void ctrlDecide()
-{
-    if(USART_RX_STA & 0x8000)
-    {
-        // SET 
-        if((USART_RX_BUF[0] == 0x53) && (USART_RX_BUF[1] == 0x45)
-            && (USART_RX_BUF[2] == 0x54))
-        {
-            // START 
-            if(USART_RX_BUF[4] == 0x53)
-            {
-                cs = AUTO_START;
-                USART_RX_STA=0;
-            }
-            // REPEAT 
-            else if(USART_RX_BUF[4] == 0x52)
-            {
-                cs = AUTO_REPEAT;
-                USART_RX_STA=0;
-            }
-            // MANUAL 
-            else if(USART_RX_BUF[4] == 0x4D)
-            {
-                cs = MANUAL;
-                USART_RX_STA=0;
-            }
-        }
-        // else
-        // {
-        //     cs = MANUAL;
-        // }
-
-    }
-}
 
 void portReport()
 {
@@ -819,6 +826,15 @@ void portReport()
 
 }
 
+void timeReport()
+{
+    printf("TIME %4d\r\n", *time_s);
+    // if(*time_s == 1)
+    // {
+    //     printf("TIME      1");
+    // }
+}
+
 int main()
 {
     init();
@@ -876,6 +892,7 @@ int main()
         if((*time_s % 10) == 0)
             // printf("%d\n", *time_s);
             portReport();
+            // timeReport();
             // ;
 
         // LED0 =! LED0;

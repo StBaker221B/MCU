@@ -66,7 +66,7 @@ class mainwindow(QtWidgets.QMainWindow):
 
         self.update = updateThread(ser)
         self.update.start()
-        self.update.trigger.connect(self.updateSwitch)
+        self.update.trigger.connect(self.updateState)
         
         # self.switchTable = {
         #     "C":[self.ui.button_C_0, self.ui.button_C_1, 
@@ -89,15 +89,20 @@ class mainwindow(QtWidgets.QMainWindow):
     #         print('receive data is :', data)
         # QtWidgets.QApplication.processEvents()
 
-    def updateSwitch(self, report):
+    def updateState(self, report):
         # print(report)
         report = report.split()
         print(report)
         section = report[0]
         function = report[1]
+        if(section[0] == '0' or section[0] == 1):
+            return 
+        elif(section == 'TIME'):
+            print(function)
+            return
         # portState = int(report[2])
         # switch = self.switchTable[report[0]][portNum]
-        if(section == 'PSA1' or section == 'PSA2'):
+        elif(section == 'PSA1' or section == 'PSA2'):
             if(function == 'IN'):
                 switch = self.switchTable[section][0]
             elif(function == 'PRO'):
@@ -140,12 +145,16 @@ class updateThread(QThread):
         self.ser = ser
 
     def run(self):
-        while True:
+        while True:            
             data = self.ser.read(11)
-            if data != b'':
+            print(data)
+            # print(data[0-8])
+            if(data != b'' and 
+                data != b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'):
             # if data != 0x00:
                 # data = list(data)
                 data = bytes.decode(data)
+                # data = data.decode('UTF-8', 'strict')
                 # data = data[2:5]
                 # print(data)
                 self.trigger.emit(data)

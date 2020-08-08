@@ -54,6 +54,7 @@ def BTN_PSA2_CLR_clicked(ser, state):
 
 # PROD 
 def BTN_PROD_OUT_clicked(ser, state):
+    # print("prod_out")
     if(state):
         spcom(ser, b'PROD OUT  1\r\n')
     else:

@@ -115,7 +115,7 @@ class mainwindow(QtWidgets.QMainWindow):
                 switch = self.switchTable[section][2]
         elif(section == 'COL2'):
             if(function == 'IN'):
-                switch = self.switchTable['COL2'][0]
+                switch = self.switchTable[section][0]
                 
         print(switch.isChecked())
         if(report[2] == '1'):

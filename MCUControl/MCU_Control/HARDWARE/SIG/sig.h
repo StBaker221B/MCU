@@ -21,9 +21,9 @@
 #define PSA2_CLR PCout(7)  // PC7	
 
 // PROD
-#define PROD_OUT PFout(6)  
-#define PROD_PSA1 PFout(7)  	
-#define PROD_PSA2 PFout(8)  	
+#define PROD_OUT PEout(2)  
+#define PROD_PSA1 PEout(3)  	
+#define PROD_PSA2 PEout(6)  	
 
 // COL2
 #define COL2_IN PBout(8)  	

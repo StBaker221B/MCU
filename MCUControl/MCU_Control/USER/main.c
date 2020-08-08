@@ -393,7 +393,7 @@ void autoCtrlrepeat()
             PROD_PSA1 = 0;
             PROD_PSA2 = 0;
 
-            COL2_IN = 0;
+            COL2_IN = 1;
             break;       
     
         case 20:  // 2 s
@@ -414,7 +414,7 @@ void autoCtrlrepeat()
             PROD_PSA1 = 0;
             PROD_PSA2 = 0;
 
-            COL2_IN = 0;
+            COL2_IN = 1;
             break;       
     
         case 30:  // 3 s
@@ -435,7 +435,7 @@ void autoCtrlrepeat()
             PROD_PSA1 = 1;
             PROD_PSA2 = 0;
 
-            COL2_IN = 0;
+            COL2_IN = 1;
             break;       
     
         case 40:  // 4 s
@@ -456,7 +456,7 @@ void autoCtrlrepeat()
             PROD_PSA1 = 0;
             PROD_PSA2 = 0;
 
-            COL2_IN = 0;
+            COL2_IN = 1;
             break;       
     
         case 50:  // 5 s
@@ -477,7 +477,7 @@ void autoCtrlrepeat()
             PROD_PSA1 = 0;
             PROD_PSA2 = 0;
 
-            COL2_IN = 0;
+            COL2_IN = 1;
             break;       
     
         case 60:  // 6 s
@@ -498,7 +498,7 @@ void autoCtrlrepeat()
             PROD_PSA1 = 0;
             PROD_PSA2 = 1;
 
-            COL2_IN = 0;
+            COL2_IN = 1;
             break;    
 
         case 61:  // over 6 s
@@ -534,7 +534,7 @@ void manualCtrl()
             }
                 
             // PRO 
-            if(USART_RX_BUF[5] == 0x50)
+            else if(USART_RX_BUF[5] == 0x50)
             {
                 port = &PSA1_PRO;
                 report[5] = 'P';
@@ -544,7 +544,7 @@ void manualCtrl()
             }
             
             // BAL 
-            if(USART_RX_BUF[5] == 0x42)
+            else if(USART_RX_BUF[5] == 0x42)
             {
                 port = &PSA1_BAL;
                 report[5] = 'B';
@@ -554,7 +554,7 @@ void manualCtrl()
             }
 
             // CLR 
-            if(USART_RX_BUF[5] == 0x43)
+            else if(USART_RX_BUF[5] == 0x43)
             {
                 port = &PSA1_CLR;
                 report[5] = 'C';
@@ -567,7 +567,7 @@ void manualCtrl()
         }
 
         // PSA2
-        if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x32))
+        else if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x32))
         {
             report[0] = 'P';
             report[1] = 'S';
@@ -586,7 +586,7 @@ void manualCtrl()
             }
                 
             // PRO 
-            if(USART_RX_BUF[5] == 0x50)
+            else if(USART_RX_BUF[5] == 0x50)
             {
                 port = &PSA2_PRO;
                 report[5] = 'P';
@@ -596,7 +596,7 @@ void manualCtrl()
             }
             
             // BAL 
-            if(USART_RX_BUF[5] == 0x42)
+            else if(USART_RX_BUF[5] == 0x42)
             {
                 port = &PSA2_BAL;
                 report[5] = 'B';
@@ -606,7 +606,7 @@ void manualCtrl()
             }
 
             // CLR 
-            if(USART_RX_BUF[5] == 0x43)
+            else if(USART_RX_BUF[5] == 0x43)
             {
                 port = &PSA2_CLR;
                 report[5] = 'C';
@@ -619,7 +619,7 @@ void manualCtrl()
         }
 
         // PROD
-        if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x44))
+        else if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x44))
         {
             report[0] = 'P';
             report[1] = 'R';
@@ -638,7 +638,7 @@ void manualCtrl()
             }
                 
             // PSA1
-            if(USART_RX_BUF[8] == 0x31)
+            else if(USART_RX_BUF[8] == 0x31)
             {
                 port = &PROD_PSA1;
                 report[5] = 'P';
@@ -648,7 +648,7 @@ void manualCtrl()
             }
             
             // PSA2
-            if(USART_RX_BUF[8] == 0x32)
+            else if(USART_RX_BUF[8] == 0x32)
             {
                 port = &PROD_PSA2;
                 report[5] = 'P';
@@ -661,7 +661,7 @@ void manualCtrl()
         }
 
         // COL2
-        if((USART_RX_BUF[0] == 0x43) )
+        else if((USART_RX_BUF[0] == 0x43) )
         {
             report[0] = 'C';
             report[1] = 'O';
@@ -672,7 +672,7 @@ void manualCtrl()
             // IN
             if(USART_RX_BUF[5] == 0x49)
             {
-                port = &PROD_OUT;
+                port = &COL2_IN;
                 report[5] = 'I';
                 report[6] = 'N';
                 report[7] = ' ';
@@ -876,6 +876,7 @@ int main()
         if((*time_s % 10) == 0)
             // printf("%d\n", *time_s);
             portReport();
+            // ;
 
         // LED0 =! LED0;
         // printf("\r\n %d \n", *time_s);

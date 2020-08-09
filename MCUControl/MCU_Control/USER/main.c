@@ -549,172 +549,174 @@ void manualCtrl()
 
     if(USART_RX_STA & 0x8000)
     {
+        report[0] = '*';
+        report[1] = ' ';
         // PSA1 
         if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x31))
         {
-            report[0] = 'P';
-            report[1] = 'S';
-            report[2] = 'A';
-            report[3] = '1';
-            report[4] = ' ';
+            report[2] = 'P';
+            report[3] = 'S';
+            report[4] = 'A';
+            report[5] = '1';
+            report[6] = ' ';
             
             // IN 
             if(USART_RX_BUF[5] == 0x49)
             {
                 port = &PSA1_IN;
-                report[5] = 'I';
-                report[6] = 'N';
-                report[7] = ' ';
-                report[8] = ' ';
+                report[7] = 'I';
+                report[8] = 'N';
+                report[9] = ' ';
+                report[10] = ' ';
             }
                 
             // PRO 
             else if(USART_RX_BUF[5] == 0x50)
             {
                 port = &PSA1_PRO;
-                report[5] = 'P';
-                report[6] = 'R';
-                report[7] = 'O';
-                report[8] = ' ';
+                report[7] = 'P';
+                report[8] = 'R';
+                report[9] = 'O';
+                report[10] = ' ';
             }
             
             // BAL 
             else if(USART_RX_BUF[5] == 0x42)
             {
                 port = &PSA1_BAL;
-                report[5] = 'B';
-                report[6] = 'A';
-                report[7] = 'L';
-                report[8] = ' ';
+                report[7] = 'B';
+                report[8] = 'A';
+                report[9] = 'L';
+                report[10] = ' ';
             }
 
             // CLR 
             else if(USART_RX_BUF[5] == 0x43)
             {
                 port = &PSA1_CLR;
-                report[5] = 'C';
-                report[6] = 'L';
-                report[7] = 'R';
-                report[8] = ' ';
+                report[7] = 'C';
+                report[8] = 'L';
+                report[9] = 'R';
+                report[10] = ' ';
             }
 
-            report[9] = ' ';
+            report[11] = ' ';
         }
 
         // PSA2
         else if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x32))
         {
-            report[0] = 'P';
-            report[1] = 'S';
-            report[2] = 'A';
-            report[3] = '2';
-            report[4] = ' ';
+            report[2] = 'P';
+            report[3] = 'S';
+            report[4] = 'A';
+            report[5] = '2';
+            report[6] = ' ';
             
             // IN 
             if(USART_RX_BUF[5] == 0x49)
             {
                 port = &PSA2_IN;
-                report[5] = 'I';
-                report[6] = 'N';
-                report[7] = ' ';
-                report[8] = ' ';
+                report[7] = 'I';
+                report[8] = 'N';
+                report[9] = ' ';
+                report[10] = ' ';
             }
                 
             // PRO 
             else if(USART_RX_BUF[5] == 0x50)
             {
                 port = &PSA2_PRO;
-                report[5] = 'P';
-                report[6] = 'R';
-                report[7] = 'O';
-                report[8] = ' ';
+                report[7] = 'P';
+                report[8] = 'R';
+                report[9] = 'O';
+                report[10] = ' ';
             }
             
             // BAL 
             else if(USART_RX_BUF[5] == 0x42)
             {
                 port = &PSA2_BAL;
-                report[5] = 'B';
-                report[6] = 'A';
-                report[7] = 'L';
-                report[8] = ' ';
+                report[7] = 'B';
+                report[8] = 'A';
+                report[9] = 'L';
+                report[10] = ' ';
             }
 
             // CLR 
             else if(USART_RX_BUF[5] == 0x43)
             {
                 port = &PSA2_CLR;
-                report[5] = 'C';
-                report[6] = 'L';
-                report[7] = 'R';
-                report[8] = ' ';
+                report[7] = 'C';
+                report[8] = 'L';
+                report[9] = 'R';
+                report[10] = ' ';
             }
 
-            report[9] = ' ';
+            report[11] = ' ';
         }
 
         // PROD
         else if((USART_RX_BUF[0] == 0x50) && (USART_RX_BUF[3] == 0x44))
         {
-            report[0] = 'P';
-            report[1] = 'R';
-            report[2] = 'O';
-            report[3] = 'D';
-            report[4] = ' ';
+            report[2] = 'P';
+            report[3] = 'R';
+            report[4] = 'O';
+            report[5] = 'D';
+            report[6] = ' ';
             
             // OUT
             if(USART_RX_BUF[5] == 0x4F)
             {
                 port = &PROD_OUT;
-                report[5] = 'O';
-                report[6] = 'U';
-                report[7] = 'T';
-                report[8] = ' ';
+                report[7] = 'O';
+                report[8] = 'U';
+                report[9] = 'T';
+                report[10] = ' ';
             }
                 
             // PSA1
             else if(USART_RX_BUF[8] == 0x31)
             {
                 port = &PROD_PSA1;
-                report[5] = 'P';
-                report[6] = 'S';
-                report[7] = 'A';
-                report[8] = '1';
+                report[7] = 'P';
+                report[8] = 'S';
+                report[9] = 'A';
+                report[10] = '1';
             }
             
             // PSA2
             else if(USART_RX_BUF[8] == 0x32)
             {
                 port = &PROD_PSA2;
-                report[5] = 'P';
-                report[6] = 'S';
-                report[7] = 'A';
-                report[8] = '2';
+                report[7] = 'P';
+                report[8] = 'S';
+                report[9] = 'A';
+                report[10] = '2';
             }
 
-            report[9] = ' ';
+            report[11] = ' ';
         }
 
         // COL2
         else if((USART_RX_BUF[0] == 0x43) )
         {
-            report[0] = 'C';
-            report[1] = 'O';
-            report[2] = 'L';
-            report[3] = '2';
-            report[4] = ' ';
+            report[2] = 'C';
+            report[3] = 'O';
+            report[4] = 'L';
+            report[5] = '2';
+            report[6] = ' ';
             
             // IN
             if(USART_RX_BUF[5] == 0x49)
             {
                 port = &COL2_IN;
-                report[5] = 'I';
-                report[6] = 'N';
-                report[7] = ' ';
-                report[8] = ' ';
+                report[7] = 'I';
+                report[8] = 'N';
+                report[9] = ' ';
+                report[10] = ' ';
             }
             
-            report[9] = ' ';
+            report[11] = ' ';
         }
 
         switch(USART_RX_BUF[10])
@@ -723,16 +725,19 @@ void manualCtrl()
             case 0x30:
                 *port = 0;
                 // printf("port = 0\n");
-                report[10] = '0';
+                report[12] = '0';
                 break;
             case 0x31:
                 *port = 1;
-                report[10] = '1';
+                report[12] = '1';
                 // printf("port = 1\n");
                 break;
         }
+
+        report[13] = ' ';
+        report[14] = '*';
         
-        for( t = 0; t < 11; t++ )
+        for( t = 0; t < 15; t++ )
         {
             // USART_SendData(USART1, report[t]);
             // while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
@@ -754,81 +759,83 @@ void portReport()
 {
     // PSA1_IN
     if(PSA1_IN)
-        printf("PSA1 IN   1");
+        printf("* PSA1 IN   1 *");
     else
-        printf("PSA1 IN   0");
+        printf("* PSA1 IN   0 *");
 
     // PSA1_PRO
     if(PSA1_PRO)
-        printf("PSA1 PRO  1");
+        printf("* PSA1 PRO  1 *");
     else
-        printf("PSA1 PRO  0");
+        printf("* PSA1 PRO  0 *");
 
     // PSA1_BAL
     if(PSA1_BAL)
-        printf("PSA1 BAL  1");
+        printf("* PSA1 BAL  1 *");
     else
-        printf("PSA1 BAL  0");
+        printf("* PSA1 BAL  0 *");
 
     // PSA1_CLR
     if(PSA1_CLR)
-        printf("PSA1 CLR  1");
+        printf("* PSA1 CLR  1 *");
     else
-        printf("PSA1 CLR  0");
+        printf("* PSA1 CLR  0 *");
 
     // PSA2_IN
     if(PSA2_IN)
-        printf("PSA2 IN   1");
+        printf("* PSA2 IN   1* ");
     else
-        printf("PSA2 IN   0");
+        printf("* PSA2 IN   0 *");
 
     // PSA2_PRO
     if(PSA2_PRO)
-        printf("PSA2 PRO  1");
+        printf("* PSA2 PRO  1 *");
     else
-        printf("PSA2 PRO  0");
+        printf("* PSA2 PRO  0 *");
 
     // PSA2_BAL
     if(PSA2_BAL)
-        printf("PSA2 BAL  1");
+        printf("* PSA2 BAL  1 *");
     else
-        printf("PSA2 BAL  0");
+        printf("* PSA2 BAL  0 *");
 
     // PSA2_CLR
     if(PSA2_CLR)
-        printf("PSA2 CLR  1");
+        printf("* PSA2 CLR  1 *");
     else
-        printf("PSA2 CLR  0");
+        printf("* PSA2 CLR  0 *");
 
     // PRPD_OUT
     if(PROD_OUT)
-        printf("PROD OUT  1");
+        printf("* PROD OUT  1 *");
     else
-        printf("PROD OUT  0");
+        printf("* PROD OUT  0 *");
 
     // PRPD_PSA1
     if(PROD_PSA1)
-        printf("PROD PSA1 1");
+        printf("* PROD PSA1 1 *");
     else
-        printf("PROD PSA1 0");
+        printf("* PROD PSA1 0 *");
 
     // PRPD_PSA2
     if(PROD_PSA2)
-        printf("PROD PSA2 1");
+        printf("* PROD PSA2 1 *");
     else
-        printf("PROD PSA2 0");
+        printf("* PROD PSA2 0 *");
 
     // COL2_IN
     if(COL2_IN)
-        printf("COL2 IN   1");
+        printf("* COL2 IN   1 *");
     else
-        printf("COL2 IN   0");
+        printf("* COL2 IN   0 *");
 
 }
 
 void timeReport()
 {
-    printf("TIME %4d\r\n", *time_s);
+    // int t;
+    // t = *time_s;
+    printf("* TIME %u *", *time_s);
     // if(*time_s == 1)
     // {
     //     printf("TIME      1");
@@ -892,7 +899,7 @@ int main()
         if((*time_s % 10) == 0)
             // printf("%d\n", *time_s);
             portReport();
-            // timeReport();
+            timeReport();
             // ;
 
         // LED0 =! LED0;

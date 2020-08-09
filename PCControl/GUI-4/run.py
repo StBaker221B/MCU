@@ -7,6 +7,7 @@ from PyQt5.QtCore import QTimer
 import serial
 import myslot
 import scom
+import spcom
 
 from PyQt5.QtCore import QThread, pyqtSignal
 # from QThread_Example_UI import Ui_Form
@@ -93,8 +94,8 @@ class mainwindow(QtWidgets.QMainWindow):
         # print(report)
         report = report.split()
         print(report)
-        section = report[0]
-        function = report[1]
+        section = report[1]
+        function = report[2]
         if(section[0] == '0' or section[0] == 1):
             return 
         elif(section == 'TIME'):
@@ -123,10 +124,10 @@ class mainwindow(QtWidgets.QMainWindow):
                 switch = self.switchTable[section][0]
                 
         print(switch.isChecked())
-        if(report[2] == '1'):
+        if(report[3] == '1'):
             if(not switch.isChecked()):
                 switch.toggle()
-        if(report[2] == '0'):
+        if(report[3] == '0'):
             if(switch.isChecked()):
                 switch.toggle()
 
@@ -144,20 +145,39 @@ class updateThread(QThread):
         super(updateThread, self).__init__()
         self.ser = ser
 
+    # def run(self):
+    #     while True:            
+    #         data = self.ser.read(11)
+    #         print(data)
+    #         # print(data[0-8])
+    #         if(data != b'' and 
+    #             data != b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'):
+    #         # if data != 0x00:
+    #             # data = list(data)
+    #             data = bytes.decode(data)
+    #             # data = data.decode('UTF-8', 'strict')
+    #             # data = data[2:5]
+    #             # print(data)
+    #             self.trigger.emit(data)
+
     def run(self):
-        while True:            
-            data = self.ser.read(11)
-            print(data)
-            # print(data[0-8])
-            if(data != b'' and 
-                data != b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'):
-            # if data != 0x00:
-                # data = list(data)
-                data = bytes.decode(data)
-                # data = data.decode('UTF-8', 'strict')
-                # data = data[2:5]
-                # print(data)
-                self.trigger.emit(data)
+        rx = []
+        while True:
+            if(self.ser.in_waiting):
+                rx.append(self.ser.read(1).decode("unicode_escape"))
+                l = len(rx)
+                if(rx[0] != '*'):
+                    if(l == 1):
+                        rx = []
+                    else:
+                        for i in range(l-1):
+                            rx[i] = rx[i+1]
+                if(l > 3):
+                    if(rx[l-1] == '*'):
+                        message = ''.join(rx)
+                        # print(message)
+                        self.trigger.emit(message)
+                        rx = []
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

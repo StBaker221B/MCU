@@ -99,7 +99,8 @@ class mainwindow(QtWidgets.QMainWindow):
         if(section[0] == '0' or section[0] == 1):
             return 
         elif(section == 'TIME'):
-            print(function)
+            # print(function)
+            self.ui.lcdTIME.display(function)
             return
         # portState = int(report[2])
         # switch = self.switchTable[report[0]][portNum]

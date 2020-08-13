@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>450</height>
+    <width>810</width>
+    <height>499</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,857 +17,1205 @@
    <string>PSA1_PRO</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="BTN_PSA1_IN">
+   <widget class="QGraphicsView" name="Background">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>70</y>
-      <width>40</width>
-      <height>40</height>
+      <x>-5</x>
+      <y>-19</y>
+      <width>911</width>
+      <height>501</height>
      </rect>
-    </property>
-    <property name="toolTip">
-     <string>PSA1_IN</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PSA1_PRO">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>140</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PSA1_PRO</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PSA1_BAL">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>120</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PSA1_BAL</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PSA1_CLR">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>40</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PSA1_CLR</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>80</y>
-      <width>521</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="midLineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+     <number>2</number>
     </property>
    </widget>
-   <widget class="Line" name="line_2">
+   <widget class="QFrame" name="frameBTNPanel">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>340</y>
-      <width>471</width>
-      <height>20</height>
+      <x>10</x>
+      <y>10</y>
+      <width>571</width>
+      <height>441</height>
      </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>3</number>
+     <number>2</number>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
+    <widget class="QGroupBox" name="groupBox_valve">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>551</width>
+       <height>421</height>
+      </rect>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Valve control pannel</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <widget class="QPushButton" name="BTN_COL2_IN">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>COL2_IN</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>200</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>PROD</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PSA2_PRO">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>260</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PSA2_PRO</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_11">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>170</y>
+        <width>20</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_16">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>360</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_13">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>270</y>
+        <width>251</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="PROD">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>200</y>
+        <width>211</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_7">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>300</y>
+        <width>351</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>60</y>
+        <width>251</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_6">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>120</y>
+        <width>351</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_15">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>280</y>
+        <width>20</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_4">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>90</y>
+        <width>20</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PSA2_IN">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>330</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PSA2_IN</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_12">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>160</y>
+        <width>251</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>330</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>PSA 2</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PSA2_BAL">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>280</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PSA2_BAL</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PSA1_BAL">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>120</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PSA1_BAL</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_9">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>130</y>
+        <width>20</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PSA2_CLR">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>360</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PSA2_CLR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PROD_OUT">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>220</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PROD_OUT</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PROD_PSA2">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>260</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PROD_PSA2</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_10">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>210</y>
+        <width>321</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="graphicsView_2">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>330</y>
+        <width>251</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PSA1_IN">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>70</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PSA1_IN</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>90</y>
+        <width>20</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_8">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>310</y>
+        <width>20</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_5">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>90</y>
+        <width>20</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PSA1_CLR">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>40</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PSA1_CLR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_17">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>60</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>60</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>PSA 1</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_14">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>110</y>
+        <width>20</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_18">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>230</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>491</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="midLineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>340</y>
+        <width>471</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PROD_PSA1">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>150</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PROD_PSA1</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="Line" name="line_19">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>230</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_PSA1_PRO">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>140</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PSA1_PRO</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resource/valveoff.png</normaloff>
+        <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="valveControlBackground">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>551</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+     </widget>
+     <zorder>valveControlBackground</zorder>
+     <zorder>line_9</zorder>
+     <zorder>line_2</zorder>
+     <zorder>line_10</zorder>
+     <zorder>line</zorder>
+     <zorder>BTN_COL2_IN</zorder>
+     <zorder>BTN_PSA2_PRO</zorder>
+     <zorder>line_11</zorder>
+     <zorder>line_16</zorder>
+     <zorder>line_13</zorder>
+     <zorder>PROD</zorder>
+     <zorder>line_7</zorder>
+     <zorder>graphicsView</zorder>
+     <zorder>line_6</zorder>
+     <zorder>line_15</zorder>
+     <zorder>line_4</zorder>
+     <zorder>BTN_PSA2_IN</zorder>
+     <zorder>line_12</zorder>
+     <zorder>BTN_PSA2_BAL</zorder>
+     <zorder>BTN_PSA1_BAL</zorder>
+     <zorder>BTN_PSA2_CLR</zorder>
+     <zorder>BTN_PROD_OUT</zorder>
+     <zorder>BTN_PROD_PSA2</zorder>
+     <zorder>graphicsView_2</zorder>
+     <zorder>BTN_PSA1_IN</zorder>
+     <zorder>line_3</zorder>
+     <zorder>line_8</zorder>
+     <zorder>line_5</zorder>
+     <zorder>BTN_PSA1_CLR</zorder>
+     <zorder>line_17</zorder>
+     <zorder>label</zorder>
+     <zorder>line_14</zorder>
+     <zorder>line_18</zorder>
+     <zorder>BTN_PROD_PSA1</zorder>
+     <zorder>line_19</zorder>
+     <zorder>BTN_PSA1_PRO</zorder>
+     <zorder>label_2</zorder>
+     <zorder>label_3</zorder>
+    </widget>
    </widget>
-   <widget class="Line" name="line_3">
+   <widget class="QFrame" name="frameSidePanel">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>90</y>
-      <width>20</width>
-      <height>261</height>
+      <x>600</x>
+      <y>10</y>
+      <width>201</width>
+      <height>441</height>
      </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>3</number>
+     <number>2</number>
     </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
+    <widget class="QGroupBox" name="groupBox_Condition">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>181</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Working condition</string>
+     </property>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>21</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Control State</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>51</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Time [s]</string>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdTIME">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>161</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelControlState">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PSA1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>140</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PSA2</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelControlState_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelControlState_3">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>160</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_ValveList">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>220</y>
+       <width>181</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Valve list</string>
+     </property>
+     <widget class="QTableWidget" name="table_ValveList">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>181</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>PSA1_IN</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PSA1_PRO</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PSA1_BAL</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PSA1_CLR</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PSA2_IN</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PSA2_PRO</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PSA2_BAL</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PSA2_CLR</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PROD_OUT</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PROD_PSA1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PROD_PSA2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>COL2_IN</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>STATE</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
    </widget>
-   <widget class="Line" name="line_4">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>90</y>
-      <width>20</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PSA2_IN">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>330</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PSA2_IN</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PSA2_BAL">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>280</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PSA2_BAL</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PSA2_CLR">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>360</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PSA2_CLR</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PSA2_PRO">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>260</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PSA2_PRO</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="Line" name="line_5">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>90</y>
-      <width>20</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_6">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>120</y>
-      <width>351</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="graphicsView">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>60</y>
-      <width>251</width>
-      <height>51</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="Line" name="line_7">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>300</y>
-      <width>351</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_8">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>310</y>
-      <width>20</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="graphicsView_2">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>330</y>
-      <width>251</width>
-      <height>51</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="Line" name="line_9">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>130</y>
-      <width>20</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_10">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>210</y>
-      <width>321</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="graphicsView_3">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>200</y>
-      <width>211</width>
-      <height>51</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PROD_OUT">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>220</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PROD_OUT</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PROD_PSA1">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>150</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PROD_PSA1</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_PROD_PSA2">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>260</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>PROD_PSA2</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="Line" name="line_11">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>170</y>
-      <width>20</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_12">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>160</y>
-      <width>251</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_13">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>270</y>
-      <width>251</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_14">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>110</y>
-      <width>20</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_15">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>280</y>
-      <width>20</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_16">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>360</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_17">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>60</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_18">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>230</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line_19">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>230</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>60</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PSA 1</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>330</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PSA 2</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>200</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PROD</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BTN_COL2_IN">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>20</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>COL2_IN</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>resource/valveoff.png</normaloff>
-      <normalon>:/logo_valve/resource/valveon.png</normalon>resource/valveoff.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>20</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Time</string>
-    </property>
-   </widget>
-   <widget class="QLCDNumber" name="lcdTIME">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>20</y>
-      <width>101</width>
-      <height>23</height>
-     </rect>
-    </property>
-   </widget>
-   <zorder>line_13</zorder>
-   <zorder>line_12</zorder>
-   <zorder>line_11</zorder>
-   <zorder>line_9</zorder>
-   <zorder>line_6</zorder>
-   <zorder>line_4</zorder>
-   <zorder>line</zorder>
-   <zorder>BTN_PSA1_PRO</zorder>
-   <zorder>BTN_PSA1_CLR</zorder>
-   <zorder>line_2</zorder>
-   <zorder>line_3</zorder>
-   <zorder>BTN_PSA1_BAL</zorder>
-   <zorder>BTN_PSA1_IN</zorder>
-   <zorder>BTN_PSA2_IN</zorder>
-   <zorder>BTN_PSA2_BAL</zorder>
-   <zorder>BTN_PSA2_CLR</zorder>
-   <zorder>BTN_PSA2_PRO</zorder>
-   <zorder>line_5</zorder>
-   <zorder>graphicsView</zorder>
-   <zorder>line_7</zorder>
-   <zorder>line_8</zorder>
-   <zorder>graphicsView_2</zorder>
-   <zorder>line_10</zorder>
-   <zorder>graphicsView_3</zorder>
-   <zorder>BTN_PROD_OUT</zorder>
-   <zorder>BTN_PROD_PSA1</zorder>
-   <zorder>BTN_PROD_PSA2</zorder>
-   <zorder>line_14</zorder>
-   <zorder>line_15</zorder>
-   <zorder>line_16</zorder>
-   <zorder>line_17</zorder>
-   <zorder>line_18</zorder>
-   <zorder>line_19</zorder>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>BTN_COL2_IN</zorder>
-   <zorder>label_4</zorder>
-   <zorder>lcdTIME</zorder>
+   <zorder>Background</zorder>
+   <zorder>frameSidePanel</zorder>
+   <zorder>frameBTNPanel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>23</height>
+     <width>810</width>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuControl">
@@ -881,8 +1229,10 @@
      <addaction name="actionStart"/>
      <addaction name="actionRepeat"/>
     </widget>
+    <addaction name="actionRun"/>
     <addaction name="menuAuto"/>
     <addaction name="actionManual"/>
+    <addaction name="actionPause"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -912,6 +1262,16 @@
   <action name="actionRepeat">
    <property name="text">
     <string>Repeat</string>
+   </property>
+  </action>
+  <action name="actionRun">
+   <property name="text">
+    <string>Run</string>
+   </property>
+  </action>
+  <action name="actionPause">
+   <property name="text">
+    <string>Pause</string>
    </property>
   </action>
  </widget>

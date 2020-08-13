@@ -842,6 +842,23 @@ void timeReport()
     // }
 }
 
+void controlReport()
+{
+    switch(cs)
+    {
+        case AUTO_START:
+            printf("* CONTROL AUTO_START *");
+            break;
+        case AUTO_REPEAT:
+            printf("* CONTROL AUTO_REPEAT *");
+            break;
+        case MANUAL:
+            printf("* CONTROL MANUAL *");
+            break;
+    }
+
+}
+
 int main()
 {
     init();
@@ -898,6 +915,7 @@ int main()
 
         if((*time_s % 10) == 0)
             // printf("%d\n", *time_s);
+            controlReport();
             portReport();
             timeReport();
             // ;

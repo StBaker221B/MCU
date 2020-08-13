@@ -93,7 +93,7 @@ class mainwindow(QtWidgets.QMainWindow):
     def updateState(self, report):
         # print(report)
         report = report.split()
-        print(report)
+        # print(report)
         section = report[1]
         function = report[2]
         if(section[0] == '0' or section[0] == 1):
@@ -102,6 +102,9 @@ class mainwindow(QtWidgets.QMainWindow):
             # print(function)
             self.ui.lcdTIME.display(function)
             return
+        elif(section == "CONTROL"):
+            print(function)
+            return 
         # portState = int(report[2])
         # switch = self.switchTable[report[0]][portNum]
         elif(section == 'PSA1' or section == 'PSA2'):
@@ -124,7 +127,7 @@ class mainwindow(QtWidgets.QMainWindow):
             if(function == 'IN'):
                 switch = self.switchTable[section][0]
                 
-        print(switch.isChecked())
+        # print(switch.isChecked())
         if(report[3] == '1'):
             if(not switch.isChecked()):
                 switch.toggle()

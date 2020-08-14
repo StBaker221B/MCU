@@ -93,10 +93,10 @@ def setManual(ser):
     spcom(ser, b'SET MANUAL\r\n')
 
 def setRun(ser):
-    spcom(ser, b'SET RUN\r\n')
+    spcom(ser, b'RUN\r\n')
 
 def setPause(ser):
-    spcom(ser, b'SET PAUSE\r\n')
+    spcom(ser, b'OFF\r\n')
 
 def timeUpdate(time, ui):
     ui.lcdTIME.display(time)

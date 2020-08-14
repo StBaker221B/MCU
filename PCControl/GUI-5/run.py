@@ -93,10 +93,11 @@ class mainwindow(QtWidgets.QMainWindow):
     def updateState(self, report):
         # print(report)
         report = report.split()
-        # print(report)
+        print(report)
         section = report[1]
         function = report[2]
-        if(section[0] == '0' or section[0] == 1):
+        if(section[0] == '0' or section[0] == 1
+            or section[0] == '\x00'):
             return 
         elif(section == 'TIME'):
             # print(function)

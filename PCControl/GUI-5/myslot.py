@@ -133,16 +133,16 @@ def timeUpdate(time, ui):
         elif(time == 2.0):
             ui.label_statePSA1.setText("balance")
             ui.label_statePSA2.setText("charge")
-        elif(time == 4.0):
+        elif(time == 3.0):
             ui.label_statePSA1.setText("sweep")
             ui.label_statePSA2.setText("work")
-        elif(time == 5.0):
+        elif(time == 4.0):
             ui.label_statePSA1.setText("off")
             ui.label_statePSA2.setText("work")
-        elif(time == 6.0):
+        elif(time == 5.0):
             ui.label_statePSA1.setText("charge")
             ui.label_statePSA2.setText("balance")
-        elif(time == 7.0):
+        elif(time == 6.0):
             ui.label_statePSA1.setText("work")
             ui.label_statePSA2.setText("sweep")
     elif(cs == "MANUAL"):

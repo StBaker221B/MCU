@@ -108,9 +108,9 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>160</x>
         <y>200</y>
-        <width>101</width>
+        <width>211</width>
         <height>51</height>
        </rect>
       </property>
@@ -118,10 +118,13 @@
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>PROD</string>
+       <string/>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="res.qrc">:/logo_vessel/resource/prodvessel.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="BTN_PSA2_PRO">
@@ -362,9 +365,9 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>160</x>
         <y>330</y>
-        <width>101</width>
+        <width>251</width>
         <height>51</height>
        </rect>
       </property>
@@ -372,10 +375,13 @@
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>PSA 2</string>
+       <string/>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="res.qrc">:/logo_vessel/resource/psavessel.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="BTN_PSA2_BAL">
@@ -700,9 +706,9 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>160</x>
         <y>60</y>
-        <width>101</width>
+        <width>251</width>
         <height>51</height>
        </rect>
       </property>
@@ -710,10 +716,13 @@
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>PSA 1</string>
+       <string/>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="res.qrc">:/logo_vessel/resource/psavessel.png</pixmap>
       </property>
      </widget>
      <widget class="Line" name="line_14">

@@ -20,42 +20,44 @@ class mainwindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        ser = scom.spopen()
-        if(ser == 0):
+        self.ser = scom.spopen()
+        if(self.ser == 0):
             print("fail")
         else:
             # PSA 1
             self.ui.BTN_PSA1_IN.clicked.connect(
-                lambda : myslot.BTN_PSA1_IN_clicked(ser, self.ui.BTN_PSA1_IN.isChecked()))
+                lambda : myslot.BTN_PSA1_IN_clicked(self.ser, self.ui.BTN_PSA1_IN.isChecked()))
             self.ui.BTN_PSA1_PRO.clicked.connect(
-                lambda : myslot.BTN_PSA1_PRO_clicked(ser, self.ui.BTN_PSA1_PRO.isChecked()))
+                lambda : myslot.BTN_PSA1_PRO_clicked(self.ser, self.ui.BTN_PSA1_PRO.isChecked()))
             self.ui.BTN_PSA1_BAL.clicked.connect(
-                lambda : myslot.BTN_PSA1_BAL_clicked(ser, self.ui.BTN_PSA1_BAL.isChecked()))
+                lambda : myslot.BTN_PSA1_BAL_clicked(self.ser, self.ui.BTN_PSA1_BAL.isChecked()))
             self.ui.BTN_PSA1_CLR.clicked.connect(
-                lambda : myslot.BTN_PSA1_CLR_clicked(ser, self.ui.BTN_PSA1_CLR.isChecked()))
+                lambda : myslot.BTN_PSA1_CLR_clicked(self.ser, self.ui.BTN_PSA1_CLR.isChecked()))
             # PSA 2
             self.ui.BTN_PSA2_IN.clicked.connect(
-                lambda : myslot.BTN_PSA2_IN_clicked(ser, self.ui.BTN_PSA2_IN.isChecked()))
+                lambda : myslot.BTN_PSA2_IN_clicked(self.ser, self.ui.BTN_PSA2_IN.isChecked()))
             self.ui.BTN_PSA2_PRO.clicked.connect(
-                lambda : myslot.BTN_PSA2_PRO_clicked(ser, self.ui.BTN_PSA2_PRO.isChecked()))
+                lambda : myslot.BTN_PSA2_PRO_clicked(self.ser, self.ui.BTN_PSA2_PRO.isChecked()))
             self.ui.BTN_PSA2_BAL.clicked.connect(
-                lambda : myslot.BTN_PSA2_BAL_clicked(ser, self.ui.BTN_PSA2_BAL.isChecked()))
+                lambda : myslot.BTN_PSA2_BAL_clicked(self.ser, self.ui.BTN_PSA2_BAL.isChecked()))
             self.ui.BTN_PSA2_CLR.clicked.connect(
-                lambda : myslot.BTN_PSA2_CLR_clicked(ser, self.ui.BTN_PSA2_CLR.isChecked()))
+                lambda : myslot.BTN_PSA2_CLR_clicked(self.ser, self.ui.BTN_PSA2_CLR.isChecked()))
             # PROD 
             self.ui.BTN_PROD_OUT.clicked.connect(
-                lambda : myslot.BTN_PROD_OUT_clicked(ser, self.ui.BTN_PROD_OUT.isChecked()))
+                lambda : myslot.BTN_PROD_OUT_clicked(self.ser, self.ui.BTN_PROD_OUT.isChecked()))
             self.ui.BTN_PROD_PSA1.clicked.connect(
-                lambda : myslot.BTN_PROD_PSA1_clicked(ser, self.ui.BTN_PROD_PSA1.isChecked()))
+                lambda : myslot.BTN_PROD_PSA1_clicked(self.ser, self.ui.BTN_PROD_PSA1.isChecked()))
             self.ui.BTN_PROD_PSA2.clicked.connect(
-                lambda : myslot.BTN_PROD_PSA2_clicked(ser, self.ui.BTN_PROD_PSA2.isChecked()))
+                lambda : myslot.BTN_PROD_PSA2_clicked(self.ser, self.ui.BTN_PROD_PSA2.isChecked()))
             # COL2
             self.ui.BTN_COL2_IN.clicked.connect(
-                lambda : myslot.BTN_COL2_IN_clicked(ser, self.ui.BTN_COL2_IN.isChecked()))
+                lambda : myslot.BTN_COL2_IN_clicked(self.ser, self.ui.BTN_COL2_IN.isChecked()))
      
-        self.ui.actionStart.triggered.connect(lambda : myslot.setAutostart(ser))
-        self.ui.actionRepeat.triggered.connect(lambda : myslot.setAutorepeat(ser))
-        self.ui.actionManual.triggered.connect(lambda : myslot.setManual(ser))
+        self.ui.actionStart.triggered.connect(lambda : myslot.setAutostart(self.ser))
+        self.ui.actionRepeat.triggered.connect(lambda : myslot.setAutorepeat(self.ser))
+        self.ui.actionManual.triggered.connect(lambda : myslot.setManual(self.ser))
+        self.ui.actionRun.triggered.connect(lambda : myslot.setRun(self.ser))
+        self.ui.actionPause.triggered.connect(lambda : myslot.setPause(self.ser))
         # self.ui.actionAbout.triggered.connect()
 
         # self.ui.button_C_2.clicked.connect(myslot.btn_C_2_clicked(ser))
@@ -63,9 +65,9 @@ class mainwindow(QtWidgets.QMainWindow):
         # self.timer = QTimer(self)
         # self.timer.timeout.connect(lambda : self.update(ser)) 
         # self.timer.start(100)
-        # self.update(ser)
+        # self.update(self.ser)
 
-        self.update = updateThread(ser)
+        self.update = updateThread(self.ser)
         self.update.start()
         self.update.trigger.connect(self.updateState)
         
@@ -101,10 +103,12 @@ class mainwindow(QtWidgets.QMainWindow):
             return 
         elif(section == 'TIME'):
             # print(function)
-            self.ui.lcdTIME.display(function)
+            # self.ui.lcdTIME.display(function)
+            time = int(function)/10
+            myslot.timeUpdate(time, self.ui)
             return
         elif(section == "CONTROL"):
-            print(function)
+            myslot.controlUpdate(function, self.ui)
             return 
         # portState = int(report[2])
         # switch = self.switchTable[report[0]][portNum]

@@ -1,5 +1,5 @@
 
-from scom import spcom
+from spcom import spcom
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 # PSA 1
@@ -92,4 +92,14 @@ def setAutorepeat(ser):
 def setManual(ser):
     spcom(ser, b'SET MANUAL\r\n')
 
+def setRun(ser):
+    spcom(ser, b'SET RUN\r\n')
 
+def setPause(ser):
+    spcom(ser, b'SET PAUSE\r\n')
+
+def timeUpdate(time, ui):
+    ui.lcdTIME.display(time)
+
+def controlUpdate(cs, ui):
+    ui.labelControlState.setText(cs)

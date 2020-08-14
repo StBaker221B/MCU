@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>PSA Control</string>
   </property>
   <property name="toolTip">
-   <string>PSA1_PRO</string>
+   <string/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGraphicsView" name="Background">

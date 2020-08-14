@@ -15,6 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(810, 499)
+        MainWindow.setToolTip("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.Background = QtWidgets.QGraphicsView(self.centralwidget)
@@ -441,8 +442,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        MainWindow.setToolTip(_translate("MainWindow", "PSA1_PRO"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "PSA Control"))
         self.groupBox_valve.setTitle(_translate("MainWindow", "Valve control pannel"))
         self.BTN_COL2_IN.setToolTip(_translate("MainWindow", "COL2_IN"))
         self.BTN_PSA2_PRO.setToolTip(_translate("MainWindow", "PSA2_PRO"))

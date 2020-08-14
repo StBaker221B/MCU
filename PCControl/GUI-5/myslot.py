@@ -100,6 +100,54 @@ def setPause(ser):
 
 def timeUpdate(time, ui):
     ui.lcdTIME.display(time)
+    cs = ui.labelControlState.text()
+    if(cs == "AUTO_START"):
+        if(time == 1.0):
+            ui.label_statePSA1.setText("charge")
+            ui.label_statePSA2.setText("off")
+        elif(time == 2.0):
+            ui.label_statePSA1.setText("work")
+            ui.label_statePSA2.setText("off")
+        elif(time == 4.0):
+            ui.label_statePSA1.setText("balance")
+            ui.label_statePSA2.setText("charge")
+        elif(time == 5.0):
+            ui.label_statePSA1.setText("sweep")
+            ui.label_statePSA2.setText("work")
+        elif(time == 6.0):
+            ui.label_statePSA1.setText("off")
+            ui.label_statePSA2.setText("work")
+        elif(time == 7.0):
+            ui.label_statePSA1.setText("charge")
+            ui.label_statePSA2.setText("balance")
+        elif(time == 8.0):
+            ui.label_statePSA1.setText("work")
+            ui.label_statePSA2.setText("sweep")
+        # elif(time == 9.0):
+        #     ui.label_statePSA1.setText("work")
+        #     ui.label_statePSA2.setText("off")
+    elif(cs == "AUTO_REPEAT"):
+        if(time == 1.0):
+            ui.label_statePSA1.setText("work")
+            ui.label_statePSA2.setText("off")
+        elif(time == 2.0):
+            ui.label_statePSA1.setText("balance")
+            ui.label_statePSA2.setText("charge")
+        elif(time == 4.0):
+            ui.label_statePSA1.setText("sweep")
+            ui.label_statePSA2.setText("work")
+        elif(time == 5.0):
+            ui.label_statePSA1.setText("off")
+            ui.label_statePSA2.setText("work")
+        elif(time == 6.0):
+            ui.label_statePSA1.setText("charge")
+            ui.label_statePSA2.setText("balance")
+        elif(time == 7.0):
+            ui.label_statePSA1.setText("work")
+            ui.label_statePSA2.setText("sweep")
+    elif(cs == "MANUAL"):
+        ui.label_statePSA1.setText("MANUAL")
+        ui.label_statePSA2.setText("MANUAL")
 
 def controlUpdate(cs, ui):
     ui.labelControlState.setText(cs)
@@ -168,17 +216,10 @@ def valveUpdate(report, ui):
         switch.setIcon(ui.icon_btnOn)
         if(not switch.isChecked()):
             switch.toggle()
-    if(report[3] == '0'):
+    elif(report[3] == '0'):
         item = QtWidgets.QTableWidgetItem("OFF")        
         ui.table_ValveList.setItem(id, 0, item)
         switch.setIcon(ui.icon_btnOff)
         if(switch.isChecked()):
             switch.toggle()
-
-    # if(switch.isChecked()):
-    #     if(report[2] == '1'):
-    #         switch.toggle()
-    # if(~switch.isChecked()):
-    #     if(report[2] == '0'):
-    #         switch.toggle()
 

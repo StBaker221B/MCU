@@ -108,6 +108,7 @@ class mainwindow(QtWidgets.QMainWindow):
         elif(section == 'PSA1' or section == 'PSA2' or 
             section == 'PROD' or section == 'COL2'):
             myslot.valveUpdate(report, self.ui)
+        
         # elif(section == 'PSA1' or section == 'PSA2'):
         #     if(function == 'IN'):
         #         switch = self.switchTable[section][0]
@@ -142,6 +143,7 @@ class mainwindow(QtWidgets.QMainWindow):
         # # if(~switch.isChecked()):
         # #     if(report[2] == '0'):
         # #         switch.toggle()
+        
 
 class updateThread(QThread):
     trigger = pyqtSignal(str)

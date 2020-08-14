@@ -1065,7 +1065,7 @@
        <string>PSA2</string>
       </property>
      </widget>
-     <widget class="QLabel" name="labelControlState_2">
+     <widget class="QLabel" name="label_statePSA1">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1087,7 +1087,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="labelControlState_3">
+     <widget class="QLabel" name="label_statePSA2">
       <property name="geometry">
        <rect>
         <x>100</x>

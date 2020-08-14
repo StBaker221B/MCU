@@ -86,6 +86,9 @@ class mainwindow(QtWidgets.QMainWindow):
             self.ui.BTN_PROD_PSA2],
             "COL2":[self.ui.BTN_COL2_IN]}
 
+        for i in range(self.ui.table_ValveList.rowCount()):
+            item = QtWidgets.QTableWidgetItem("OFF")        
+            self.ui.table_ValveList.setItem(i, 0, item)
     # def update(self, ser):
     #     data = ser.read(10)
     #     if data != b'':
@@ -112,40 +115,44 @@ class mainwindow(QtWidgets.QMainWindow):
             return 
         # portState = int(report[2])
         # switch = self.switchTable[report[0]][portNum]
-        elif(section == 'PSA1' or section == 'PSA2'):
-            if(function == 'IN'):
-                switch = self.switchTable[section][0]
-            elif(function == 'PRO'):
-                switch = self.switchTable[section][1]
-            elif(function == 'BAL'):
-                switch = self.switchTable[section][2]
-            elif(function == 'CLR'):
-                switch = self.switchTable[section][3]
-        elif(section == 'PROD'):
-            if(function == 'OUT'):
-                switch = self.switchTable[section][0]
-            elif(function == 'PSA1'):
-                switch = self.switchTable[section][1]
-            elif(function == 'PSA2'):
-                switch = self.switchTable[section][2]
-        elif(section == 'COL2'):
-            if(function == 'IN'):
-                switch = self.switchTable[section][0]
-                
-        # print(switch.isChecked())
-        if(report[3] == '1'):
-            if(not switch.isChecked()):
-                switch.toggle()
-        if(report[3] == '0'):
-            if(switch.isChecked()):
-                switch.toggle()
 
-        # if(switch.isChecked()):
-        #     if(report[2] == '1'):
+        elif(section == 'PSA1' or section == 'PSA2' or 
+            section == 'PROD' or section == 'COL2'):
+            myslot.valveUpdate(report, self.ui)
+        # elif(section == 'PSA1' or section == 'PSA2'):
+        #     if(function == 'IN'):
+        #         switch = self.switchTable[section][0]
+        #     elif(function == 'PRO'):
+        #         switch = self.switchTable[section][1]
+        #     elif(function == 'BAL'):
+        #         switch = self.switchTable[section][2]
+        #     elif(function == 'CLR'):
+        #         switch = self.switchTable[section][3]
+        # elif(section == 'PROD'):
+        #     if(function == 'OUT'):
+        #         switch = self.switchTable[section][0]
+        #     elif(function == 'PSA1'):
+        #         switch = self.switchTable[section][1]
+        #     elif(function == 'PSA2'):
+        #         switch = self.switchTable[section][2]
+        # elif(section == 'COL2'):
+        #     if(function == 'IN'):
+        #         switch = self.switchTable[section][0]
+                
+        # # print(switch.isChecked())
+        # if(report[3] == '1'):
+        #     if(not switch.isChecked()):
         #         switch.toggle()
-        # if(~switch.isChecked()):
-        #     if(report[2] == '0'):
+        # if(report[3] == '0'):
+        #     if(switch.isChecked()):
         #         switch.toggle()
+
+        # # if(switch.isChecked()):
+        # #     if(report[2] == '1'):
+        # #         switch.toggle()
+        # # if(~switch.isChecked()):
+        # #     if(report[2] == '0'):
+        # #         switch.toggle()
 
 class updateThread(QThread):
     trigger = pyqtSignal(str)

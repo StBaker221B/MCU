@@ -165,11 +165,13 @@ def valveUpdate(report, ui):
     if(report[3] == '1'):
         item = QtWidgets.QTableWidgetItem("ON")        
         ui.table_ValveList.setItem(id, 0, item)
+        switch.setIcon(ui.icon_btnOn)
         if(not switch.isChecked()):
             switch.toggle()
     if(report[3] == '0'):
         item = QtWidgets.QTableWidgetItem("OFF")        
         ui.table_ValveList.setItem(id, 0, item)
+        switch.setIcon(ui.icon_btnOff)
         if(switch.isChecked()):
             switch.toggle()
 

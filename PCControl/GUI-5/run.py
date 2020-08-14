@@ -1,5 +1,5 @@
 
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, QtGui
 from mainwindow import Ui_MainWindow
 import sys
 
@@ -60,23 +60,10 @@ class mainwindow(QtWidgets.QMainWindow):
         self.ui.actionPause.triggered.connect(lambda : myslot.setPause(self.ser))
         # self.ui.actionAbout.triggered.connect()
 
-        # self.ui.button_C_2.clicked.connect(myslot.btn_C_2_clicked(ser))
-        
-        # self.timer = QTimer(self)
-        # self.timer.timeout.connect(lambda : self.update(ser)) 
-        # self.timer.start(100)
-        # self.update(self.ser)
-
         self.update = updateThread(self.ser)
         self.update.start()
         self.update.trigger.connect(self.updateState)
         
-        # self.switchTable = {
-        #     "C":[self.ui.button_C_0, self.ui.button_C_1, 
-        #     self.ui.button_C_2, self.ui.button_C_3, 
-        #     self.ui.button_C_4, self.ui.button_C_5,
-        #     self.ui.button_C_6, self.ui.button_C_7,
-        #     self.ui.button_C_8, self.ui.button_C_9]}
         self.switchTable = {
             "PSA1":[self.ui.BTN_PSA1_IN, self.ui.BTN_PSA1_PRO, 
             self.ui.BTN_PSA1_BAL, self.ui.BTN_PSA1_CLR],
@@ -86,14 +73,16 @@ class mainwindow(QtWidgets.QMainWindow):
             self.ui.BTN_PROD_PSA2],
             "COL2":[self.ui.BTN_COL2_IN]}
 
+        self.ui.icon_btnOn = QtGui.QIcon(QtGui.QPixmap("./resource/valveon.png"))
+        self.ui.icon_btnOff = QtGui.QIcon(QtGui.QPixmap("./resource/valveoff.png"))
+
+        for section in self.switchTable:
+            for i in self.switchTable[section]:
+                i.setIcon(self.ui.icon_btnOff)
+
         for i in range(self.ui.table_ValveList.rowCount()):
             item = QtWidgets.QTableWidgetItem("OFF")        
             self.ui.table_ValveList.setItem(i, 0, item)
-    # def update(self, ser):
-    #     data = ser.read(10)
-    #     if data != b'':
-    #         print('receive data is :', data)
-        # QtWidgets.QApplication.processEvents()
 
     def updateState(self, report):
         # print(report)

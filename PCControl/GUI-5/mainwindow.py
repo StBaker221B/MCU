@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './mainwindow.ui'
+# Form implementation generated from reading ui file '.\mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -40,7 +40,7 @@ class Ui_MainWindow(object):
         self.BTN_COL2_IN = QtWidgets.QPushButton(self.groupBox_valve)
         self.BTN_COL2_IN.setGeometry(QtCore.QRect(30, 30, 40, 40))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("./resource/valveoff.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\resource/valveoff.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon.addPixmap(QtGui.QPixmap(":/logo_valve/resource/valveon.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.BTN_COL2_IN.setIcon(icon)
         self.BTN_COL2_IN.setIconSize(QtCore.QSize(32, 32))

@@ -1,6 +1,7 @@
 
 from PyQt5 import QtWidgets, QtCore, QtGui
 from mainwindow import Ui_MainWindow
+from about import Ui_AboutDlg
 import sys
 
 from PyQt5.QtCore import QTimer
@@ -19,6 +20,7 @@ class mainwindow(QtWidgets.QMainWindow):
         super(mainwindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.aboutDlg = aboutdlg()
 
         self.ser = scom.spopen()
         if(self.ser == 0):
@@ -58,7 +60,7 @@ class mainwindow(QtWidgets.QMainWindow):
         self.ui.actionManual.triggered.connect(lambda : myslot.setManual(self.ser))
         self.ui.actionRun.triggered.connect(lambda : myslot.setRun(self.ser))
         self.ui.actionPause.triggered.connect(lambda : myslot.setPause(self.ser))
-        # self.ui.actionAbout.triggered.connect()
+        self.ui.actionAbout.triggered.connect(lambda : self.winAbout())
 
         self.update = updateThread(self.ser)
         self.update.start()
@@ -143,7 +145,18 @@ class mainwindow(QtWidgets.QMainWindow):
         # # if(~switch.isChecked()):
         # #     if(report[2] == '0'):
         # #         switch.toggle()
+    
+    def winAbout(self):
+        # self.aboutWin = Ui_AboutDlg()
+        self.aboutDlg.show()
+
+class aboutdlg(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(aboutdlg, self).__init__()
+        self.ui = Ui_AboutDlg()
+        self.ui.setupUi(self)
         
+        self.ui.BTN_OK.clicked.connect(lambda : myslot.BTN_OK_clicked(self))
 
 class updateThread(QThread):
     trigger = pyqtSignal(str)

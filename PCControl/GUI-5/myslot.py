@@ -223,3 +223,5 @@ def valveUpdate(report, ui):
         if(switch.isChecked()):
             switch.toggle()
 
+def BTN_OK_clicked(dlg):
+    dlg.close()
